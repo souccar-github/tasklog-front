@@ -1,0 +1,102 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createDailyWorkModal="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewDailyWork' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <tabset>
+      <tab [heading]="'DailyWorkDetails' | localize" class="pt-3 px-2">
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="name">
+            {{ "Project" | localize }}
+          </label>
+          <div class="col-md-9">
+
+            <select [(ngModel)]="dailyWork.projectId"  class="form-control" name="name" id="name">
+                <option   required
+                  *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+                </select>
+
+          </div>
+        </div>
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="type">
+            {{ "Type" | localize }}
+          </label>
+          <div class="col-md-9">
+
+           
+            <select [(ngModel)]="dailyWork.typeId" class="form-control" name="type" id="type">
+                <option
+                   required
+               *ngFor="let type of taskTypes"  [ngValue]="type.id">{{type.name}}
+            </option>
+                </select>
+
+          </div>
+        </div>
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="date">
+            {{ "Date" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input
+              type="date"
+              class="form-control"
+              name="date"
+              id="date"
+              required
+              minlength="2"
+              maxlength="32"
+              [(ngModel)]="dailyWork.date"
+              #userNameModel="ngModel"
+              #userNameEl
+            />
+            <abp-validation-summary
+              [control]="userNameModel"
+              [controlEl]="userNameEl"
+            ></abp-validation-summary>
+          </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "Duration" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="number"
+                class="form-control"
+                name="duration"
+                id="duration"
+                required
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="dailyWork.duration"
+                #userNameModel="ngModel"
+                #userNameEl
+              />
+              <abp-validation-summary
+                [control]="userNameModel"
+                [controlEl]="userNameEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+        
+        
+        
+       
+      </tab>
+      
+    </tabset>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createDailyWorkModal.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

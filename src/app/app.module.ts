@@ -38,6 +38,12 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { ProjectComponent } from './project/project.component';
+import { CreateProjectDialogComponent } from './project/create-project/create-project-dialog.component';
+import { EditProjectDialogComponent } from './project/edit-project/edit-project-dialog.component';
+import { DailyworkComponent } from './dailywork/dailywork.component';
+import { CreateDailyworkDialogComponent } from './dailywork/create-dailywork/create-dailywork-dialog.component';
+import { EditDailyworkDialogComponent } from './dailywork/edit-dailywork/edit-dailywork-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +73,15 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    ProjectComponent,
+    CreateProjectDialogComponent,
+    EditProjectDialogComponent,
+    DailyworkComponent,
+    CreateDailyworkDialogComponent,
+    EditDailyworkDialogComponent
+    
+
   ],
   imports: [
     CommonModule,
@@ -96,6 +110,8 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
+
+   
   ],
 })
 export class AppModule {}
