@@ -72,6 +72,7 @@ export class DailyworkComponent extends PagedListingComponentBase<DailyWorkDto> 
   }
 
   ngOnInit(): void {
+    this.refresh();
   }
 
 

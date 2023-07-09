@@ -144,6 +144,7 @@
                                 <th>{{ "Type" | localize }}</th>
                                 <th>{{ "Date" | localize }}</th>
                                 <th>{{ "Duration" | localize }}</th>
+                                <th>{{ "User" | localize }}</th>
                                 <th style="width: 310px;">{{ "Actions" | localize }}</th>
                             </tr>
                             </thead>
@@ -164,11 +165,12 @@
                                 <td>{{ dailyWork.type?.name }}</td>
                                 <td>{{ dailyWork.date }}</td>
                                 <td>{{ dailyWork.duration }}</td>
+                                <td>{{ dailyWork.user.userName }}</td>
                                 <td>
                                     <button
                                             type="button"
                                             class="btn btn-sm bg-secondary"
-                                            (click)="editDailyWork(user)"
+                                            (click)="editDailyWork(dailyWork)"
                                     >
                                         <i class="fas fa-pencil-alt"></i>
                                         {{ "Edit" | localize }}
@@ -176,7 +178,7 @@
                                     <button
                                             type="button"
                                             class="btn btn-sm bg-danger mx-2"
-                                            (click)="delete(user)"
+                                            (click)="delete(dailyWork)"
                                     >
                                         <i class="fas fa-trash"></i>
                                         {{ "Delete" | localize }}

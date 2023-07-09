@@ -4483,6 +4483,7 @@ export class DailyWorkDto implements IDailyWorkDto {
     duration: number;
     project: ProjectDto;
     type: TaskTypeDto;
+    user: UserDto;
 
     constructor(data?: IDailyWorkDto) {
         if (data) {
@@ -4500,6 +4501,7 @@ export class DailyWorkDto implements IDailyWorkDto {
             this.duration = _data["duration"];
             this.project = _data["project"] ? ProjectDto.fromJS(_data["project"]) : <any>undefined;
             this.type = _data["type"] ? TaskTypeDto.fromJS(_data["type"]) : <any>undefined;
+            this.user = _data["user"] ? UserDto.fromJS(_data["user"]) : <any>undefined;
         }
     }
 
@@ -4517,6 +4519,7 @@ export class DailyWorkDto implements IDailyWorkDto {
         data["duration"] = this.duration;
         data["project"] = this.project ? this.project.toJSON() : <any>undefined;
         data["type"] = this.type ? this.type.toJSON() : <any>undefined;
+        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
         return data; 
     }
 
@@ -4534,6 +4537,7 @@ export interface IDailyWorkDto {
     duration: number;
     project: ProjectDto;
     type: TaskTypeDto;
+    user: UserDto;
 }
 
 export class DailyWorkDtoPagedResultDto implements IDailyWorkDtoPagedResultDto {
