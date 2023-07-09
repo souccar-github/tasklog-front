@@ -6315,7 +6315,7 @@ export interface ITenantLoginInfoDto {
 
 export class UpdateDailyWorkDto implements IUpdateDailyWorkDto {
     id: number;
-    date: moment.Moment;
+    date: string | undefined;
     duration: number;
     projectId: number;
     typeId: number;
@@ -6332,7 +6332,7 @@ export class UpdateDailyWorkDto implements IUpdateDailyWorkDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
-            this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
+            this.date = _data["date"];
             this.duration = _data["duration"];
             this.projectId = _data["projectId"];
             this.typeId = _data["typeId"];
@@ -6349,7 +6349,7 @@ export class UpdateDailyWorkDto implements IUpdateDailyWorkDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["date"] = this.date;
         data["duration"] = this.duration;
         data["projectId"] = this.projectId;
         data["typeId"] = this.typeId;
@@ -6366,7 +6366,7 @@ export class UpdateDailyWorkDto implements IUpdateDailyWorkDto {
 
 export interface IUpdateDailyWorkDto {
     id: number;
-    date: moment.Moment;
+    date: string | undefined;
     duration: number;
     projectId: number;
     typeId: number;
