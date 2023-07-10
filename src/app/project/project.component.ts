@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
 import { CreateProjectDialogComponent } from './create-project/create-project-dialog.component';
 import { EditProjectDialogComponent } from './edit-project/edit-project-dialog.component';
+import { Router } from '@angular/router';
 
 
 class PagedProjectsRequestDto extends PagedRequestDto {
@@ -30,7 +31,8 @@ export class ProjectComponent extends PagedListingComponentBase<ProjectDto>  {
   constructor(
     injector: Injector,
     private _projectService: ProjectServiceProxy,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
+    private router : Router
   ) {
     super(injector);
   }
@@ -72,6 +74,11 @@ export class ProjectComponent extends PagedListingComponentBase<ProjectDto>  {
         }
       }
     );
+  }
+
+  onPhaseButtonClick(event)
+  {
+    this.router.navigateByUrl('app/project/' + event.id +'/phases');
   }
 
 

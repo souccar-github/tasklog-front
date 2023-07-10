@@ -45,6 +45,8 @@ import { DailyworkComponent } from './dailywork/dailywork.component';
 import { CreateDailyworkDialogComponent } from './dailywork/create-dailywork/create-dailywork-dialog.component';
 import { EditDailyworkDialogComponent } from './dailywork/edit-dailywork/edit-dailywork-dialog.component';
 import { PhaseComponent } from './phase/phase.component';
+import { CreatePhaseDialogComponent } from './phase/create-phase/create-phase-dialog.component';
+import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { PhaseComponent } from './phase/phase.component';
     DailyworkComponent,
     CreateDailyworkDialogComponent,
     EditDailyworkDialogComponent,
-    PhaseComponent
+    PhaseComponent,
+
     
 
   ],
@@ -112,7 +115,8 @@ import { PhaseComponent } from './phase/phase.component';
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
-
+    CreatePhaseDialogComponent,
+    EditPhaseDialogComponent
    
   ],
 })

@@ -20,16 +20,14 @@ import { PhaseComponent } from './phase/phase.component';
                 component: AppComponent,
                 children: [
                     { path: 'home', component: HomeComponent,  canActivate: [AppRouteGuard] },
-                    { path: 'projects', component: ProjectComponent,  canActivate: [AppRouteGuard] 
-                    ,children:[
-                        { path: ':id/phases', component: PhaseComponent,  canActivate: [AppRouteGuard] },
-                    ]},
+                    { path: 'projects', component: ProjectComponent,  canActivate: [AppRouteGuard]},
+                    { path: 'project/:id/phases', component: PhaseComponent,  canActivate: [AppRouteGuard] },
                     { path: 'dailyworks', component: DailyworkComponent,  canActivate: [AppRouteGuard] },
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
-                    { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] }
+                    { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] },
                 ]
             }
         ])

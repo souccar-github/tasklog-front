@@ -178,7 +178,7 @@
                                     <button
                                     type="button"
                                     class="btn btn-sm bg-primary mx-2"
-
+                                    (click)="onPhaseButtonClick(project)"
                             >
                                 <i class="fas fa-plus-square"></i>
                                 {{ "Phases" | localize }}
@@ -218,4 +218,3 @@
     </section>
 </div>
 
-<router-outlet></router-outlet>
