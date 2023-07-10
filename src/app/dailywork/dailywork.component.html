@@ -163,7 +163,7 @@
                             >
                                 <td>{{ dailyWork.project?.name }}</td>
                                 <td>{{ dailyWork.type?.name }}</td>
-                                <td>{{ dailyWork.date }}</td>
+                                <td>{{ dailyWork.date | date: 'dd - MMM - yyyy' }}</td>
                                 <td>{{ dailyWork.duration }}</td>
                                 <td>{{ dailyWork.user?.userName }}</td>
                                 <td>
