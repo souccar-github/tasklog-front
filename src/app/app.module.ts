@@ -44,6 +44,7 @@ import { EditProjectDialogComponent } from './project/edit-project/edit-project-
 import { DailyworkComponent } from './dailywork/dailywork.component';
 import { CreateDailyworkDialogComponent } from './dailywork/create-dailywork/create-dailywork-dialog.component';
 import { EditDailyworkDialogComponent } from './dailywork/edit-dailywork/edit-dailywork-dialog.component';
+import { PhaseComponent } from './phase/phase.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { EditDailyworkDialogComponent } from './dailywork/edit-dailywork/edit-da
     EditProjectDialogComponent,
     DailyworkComponent,
     CreateDailyworkDialogComponent,
-    EditDailyworkDialogComponent
+    EditDailyworkDialogComponent,
+    PhaseComponent
     
 
   ],

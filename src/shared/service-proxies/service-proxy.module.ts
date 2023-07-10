@@ -16,6 +16,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.DailyWorkServiceProxy,
         ApiServiceProxies.ProjectServiceProxy,
         ApiServiceProxies.TaskTypeServiceProxy,
+        ApiServiceProxies.PhaseServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })
