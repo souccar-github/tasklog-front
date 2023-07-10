@@ -142,7 +142,9 @@
                             <tr>
                                 <th>{{ "Title" | localize }}</th>
                                 <th>{{ "Description" | localize }}</th>
-                                <th style="width: 310px;">{{ "Actions" | localize }}</th>
+                                <th>{{ "Start Date" | localize }}</th>
+                                <th>{{ "End Date" | localize }}</th>
+                                <th style="width: 450px;">{{ "Actions" | localize }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -160,6 +162,9 @@
                             >
                                 <td>{{ phase.title }}</td>
                                 <td>{{ phase.description }}</td>
+                                <td>{{ phase.startDate }}</td>
+                                <td *ngIf="phase.endDate != '1/1/0001 12:00:00 AM'">{{ phase.endDate }}</td>
+                                <td *ngIf="phase.endDate == '1/1/0001 12:00:00 AM'">{{ "Pending..." | localize }}</td>
                                 <td>
                                     <button
                                             type="button"
@@ -177,15 +182,23 @@
                                         <i class="fas fa-trash"></i>
                                         {{ "Delete" | localize }}
                                     </button>
-                                    <button
+                                    <button style="width:100px"
                                     type="button"
-                                    class="btn btn-sm bg-primary mx-2"
+                                    class="btn btn-sm bg-blue mx-2"
                             >
-                                <i class="fas fa-plus-square"></i>
                                 {{ "Tasks" | localize }}
                             </button>
-                                   
-                                </td>
+
+                            <button
+                            type="button"
+                            class="btn btn-sm bg-primary mx-2"
+                    >
+                        <i class="fas fa-check"></i>
+                        {{ "Complete Phase" | localize }}
+                    </button>
+                            </td>
+                            
+          
                             </tr>
                             </tbody>
                         </table>

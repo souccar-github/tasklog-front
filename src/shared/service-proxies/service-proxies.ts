@@ -5208,6 +5208,8 @@ export class PhaseDto implements IPhaseDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     project: ProjectDto;
 
     constructor(data?: IPhaseDto) {
@@ -5224,6 +5226,8 @@ export class PhaseDto implements IPhaseDto {
             this.id = _data["id"];
             this.title = _data["title"];
             this.description = _data["description"];
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
             this.project = _data["project"] ? ProjectDto.fromJS(_data["project"]) : <any>undefined;
         }
     }
@@ -5240,6 +5244,8 @@ export class PhaseDto implements IPhaseDto {
         data["id"] = this.id;
         data["title"] = this.title;
         data["description"] = this.description;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         data["project"] = this.project ? this.project.toJSON() : <any>undefined;
         return data; 
     }
@@ -5256,6 +5262,8 @@ export interface IPhaseDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     project: ProjectDto;
 }
 
