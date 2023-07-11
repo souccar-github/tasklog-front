@@ -92,11 +92,15 @@ constructor(injector: Injector,
   }
 
   createPhase(): void {
-    this.showCreateOrEditPhaseDialog();
+    let id;
+    this.routeSub = this.route.params.subscribe(params => {
+      id =  params['id'];
+    });
+    this.showCreateWithId(id);
   }
 
-  editPhase(project: ProjectDto): void {
-    this.showCreateOrEditPhaseDialog(project.id);
+  editPhase(phase: PhaseDto): void {
+    this.showCreateOrEditPhaseDialog(phase.id);
   }
 
 
@@ -104,6 +108,24 @@ constructor(injector: Injector,
     this.keyword = '';
     this.isActive = undefined;
     this.getDataPage(1);
+  }
+
+
+  private showCreateWithId(id?: number): void {
+    let showCreateOnlyWithId: BsModalRef;
+    showCreateOnlyWithId = this._modalService.show(
+      CreatePhaseDialogComponent,
+      {
+        class: 'modal-lg',
+        initialState: {
+          id: id,
+        },
+      }
+    );
+    showCreateOnlyWithId.content.onSave.subscribe(() => {
+      this.refresh();
+    });
+
   }
 
   private showCreateOrEditPhaseDialog(id?: number): void {

@@ -84,7 +84,8 @@ import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.c
     CreateDailyworkDialogComponent,
     EditDailyworkDialogComponent,
     PhaseComponent,
-
+    CreatePhaseDialogComponent,
+    EditPhaseDialogComponent
     
 
   ],
@@ -115,8 +116,7 @@ import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.c
     CreateUserDialogComponent,
     EditUserDialogComponent,
     ResetPasswordDialogComponent,
-    CreatePhaseDialogComponent,
-    EditPhaseDialogComponent
+
    
   ],
 })

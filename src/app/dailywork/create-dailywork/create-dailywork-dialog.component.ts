@@ -52,7 +52,6 @@ export class CreateDailyworkDialogComponent extends AppComponentBase {
   }
 
   save(): void {
-    console.log(this.projects);
 
     this.saving = true;
 
