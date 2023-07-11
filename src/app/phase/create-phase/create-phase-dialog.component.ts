@@ -25,7 +25,6 @@ export class CreatePhaseDialogComponent extends AppComponentBase {
   id: number;
 
   ngOnInit(): void {
-    console.log(this.id);
 
   }
 

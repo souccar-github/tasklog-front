@@ -1,1 +1,110 @@
-<p>edit-phase-dialog works!</p>
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createDailyWorkModal="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateNewPhase' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+
+
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="date">
+            {{ "Title" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              id="title"
+              required
+              minlength="2"
+              maxlength="32"
+              [(ngModel)]="phase.title"
+              #userNameModel="ngModel"
+              #userNameEl
+            />
+            <abp-validation-summary
+              [control]="userNameModel"
+              [controlEl]="userNameEl"
+            ></abp-validation-summary>
+          </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "Description" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                name="description"
+                id="description"
+                required
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="phase.description"
+                #userNameModel="ngModel"
+                #userNameEl
+              />
+              <abp-validation-summary
+                [control]="userNameModel"
+                [controlEl]="userNameEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "Start Date" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                name="startdate"
+                id="startdate"
+                required
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="phase.startDate"
+                #userNameModel="ngModel"
+                #userNameEl
+              />
+              <abp-validation-summary
+                [control]="userNameModel"
+                [controlEl]="userNameEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "End Date" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                name="enddate"
+                id="enddate"
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="phase.endDate"
+              />
+
+            </div>
+          </div>
+        
+        
+       
+  
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createDailyWorkModal.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

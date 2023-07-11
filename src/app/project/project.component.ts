@@ -4,7 +4,7 @@ import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listin
 import { ProjectDto, ProjectDtoPagedResultDto, ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { finalize } from 'rxjs/operators';
-import { CreateProjectDialogComponent } from './create-project/create-project-dialog.component';
+import CreateProjectDialogComponent from './create-project/create-project-dialog.component';
 import { EditProjectDialogComponent } from './edit-project/edit-project-dialog.component';
 import { Router } from '@angular/router';
 

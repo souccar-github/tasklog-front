@@ -4080,6 +4080,8 @@ export interface ICreateDailyWorkDto {
 export class CreatePhaseDto implements ICreatePhaseDto {
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     projectId: number;
 
     constructor(data?: ICreatePhaseDto) {
@@ -4095,6 +4097,8 @@ export class CreatePhaseDto implements ICreatePhaseDto {
         if (_data) {
             this.title = _data["title"];
             this.description = _data["description"];
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
             this.projectId = _data["projectId"];
         }
     }
@@ -4110,6 +4114,8 @@ export class CreatePhaseDto implements ICreatePhaseDto {
         data = typeof data === 'object' ? data : {};
         data["title"] = this.title;
         data["description"] = this.description;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         data["projectId"] = this.projectId;
         return data; 
     }
@@ -4125,6 +4131,8 @@ export class CreatePhaseDto implements ICreatePhaseDto {
 export interface ICreatePhaseDto {
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     projectId: number;
 }
 
@@ -6389,6 +6397,8 @@ export class UpdatePhaseDto implements IUpdatePhaseDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     projectId: number;
 
     constructor(data?: IUpdatePhaseDto) {
@@ -6405,6 +6415,8 @@ export class UpdatePhaseDto implements IUpdatePhaseDto {
             this.id = _data["id"];
             this.title = _data["title"];
             this.description = _data["description"];
+            this.startDate = _data["startDate"];
+            this.endDate = _data["endDate"];
             this.projectId = _data["projectId"];
         }
     }
@@ -6421,6 +6433,8 @@ export class UpdatePhaseDto implements IUpdatePhaseDto {
         data["id"] = this.id;
         data["title"] = this.title;
         data["description"] = this.description;
+        data["startDate"] = this.startDate;
+        data["endDate"] = this.endDate;
         data["projectId"] = this.projectId;
         return data; 
     }
@@ -6437,6 +6451,8 @@ export interface IUpdatePhaseDto {
     id: number;
     title: string | undefined;
     description: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
     projectId: number;
 }
 

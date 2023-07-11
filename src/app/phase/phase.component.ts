@@ -2,7 +2,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { PhaseDto, PhaseDtoPagedResultDto, PhaseServiceProxy, ProjectDto, ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
+import { EntityDto, PhaseDto, PhaseDtoPagedResultDto, PhaseServiceProxy, ProjectDto, ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -128,6 +128,24 @@ constructor(injector: Injector,
 
   }
 
+
+  completePhase(entity:PhaseDto):void{
+    let entityDto = new EntityDto();
+    entityDto.id = entity.id;
+    abp.message.confirm(
+      this.l('PhaseCompleteWarningMessage', entity.title),
+      undefined,
+      (result: boolean) => {
+        if (result) {
+          this._phaseService.completePhase(entityDto).subscribe(() => {
+            abp.notify.success(this.l('Completed!'));
+            this.refresh();
+          });
+        }
+      }
+    );
+  }
+
   private showCreateOrEditPhaseDialog(id?: number): void {
     let showCreateOrEditProjectDialog: BsModalRef;
     if (!id) {
@@ -144,6 +162,7 @@ constructor(injector: Injector,
           class: 'modal-lg',
           initialState: {
             id: id,
+            projectId : this.project.id,
           },
         }
       );

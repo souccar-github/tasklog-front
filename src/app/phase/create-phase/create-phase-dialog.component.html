@@ -58,7 +58,49 @@
               ></abp-validation-summary>
             </div>
           </div>
-        
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "Start Date" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="date"
+                class="form-control"
+                name="startdate"
+                id="startdate"
+                required
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="phase.startDate"
+                #userNameModel2="ngModel"
+                #userNameEl2
+              />
+              <abp-validation-summary
+                [control]="userNameModel2"
+                [controlEl]="userNameEl2"
+              ></abp-validation-summary>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "End Date" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="date"
+                class="form-control"
+                name="enddate"
+                id="enddate"
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="phase.endDate"
+                #userNameModel2="ngModel"
+                #userNameEl2
+              />
+
+            </div>
+          </div>
+          
         
         
        

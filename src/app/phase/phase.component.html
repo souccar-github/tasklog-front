@@ -162,8 +162,8 @@
                             >
                                 <td>{{ phase.title }}</td>
                                 <td>{{ phase.description }}</td>
-                                <td>{{ phase.startDate }}</td>
-                                <td *ngIf="phase.endDate != '1/1/0001 12:00:00 AM'">{{ phase.endDate }}</td>
+                                <td>{{ phase.startDate | date: 'dd - MMM - yyyy' }}</td>
+                                <td *ngIf="phase.endDate != '1/1/0001 12:00:00 AM'">{{ phase.endDate | date: 'dd - MMM - yyyy' }}</td>
                                 <td *ngIf="phase.endDate == '1/1/0001 12:00:00 AM'">{{ "Pending..." | localize }}</td>
                                 <td>
                                     <button
@@ -192,10 +192,21 @@
                             <button
                             type="button"
                             class="btn btn-sm bg-primary mx-2"
+                            (click)="completePhase(phase)"
+                            *ngIf="phase.endDate == '1/1/0001 12:00:00 AM'"
                     >
                         <i class="fas fa-check"></i>
                         {{ "Complete Phase" | localize }}
                     </button>
+                    <button
+                    type="button"
+                    class="btn btn-sm bg-success mx-2"
+                    *ngIf="phase.endDate != '1/1/0001 12:00:00 AM'"
+                    disabled
+            >
+                <i class="fas fa-check"></i>
+                {{ "Completed" | localize }}
+            </button>
                             </td>
                             
           

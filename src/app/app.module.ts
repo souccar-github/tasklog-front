@@ -39,7 +39,7 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { ProjectComponent } from './project/project.component';
-import { CreateProjectDialogComponent } from './project/create-project/create-project-dialog.component';
+import CreateProjectDialogComponent from './project/create-project/create-project-dialog.component';
 import { EditProjectDialogComponent } from './project/edit-project/edit-project-dialog.component';
 import { DailyworkComponent } from './dailywork/dailywork.component';
 import { CreateDailyworkDialogComponent } from './dailywork/create-dailywork/create-dailywork-dialog.component';
