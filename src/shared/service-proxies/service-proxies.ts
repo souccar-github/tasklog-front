@@ -1968,16 +1968,21 @@ export class TaskServiceProxy {
 
     /**
      * @param keyword (optional) 
+     * @param phaseId (optional) 
      * @param skipCount (optional) 
      * @param maxResultCount (optional) 
      * @return Success
      */
-    getAll(keyword: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<TaskDtoPagedResultDto> {
+    getAll(keyword: string | undefined, phaseId: number | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<TaskDtoPagedResultDto> {
         let url_ = this.baseUrl + "/api/services/app/Task/GetAll?";
         if (keyword === null)
             throw new Error("The parameter 'keyword' cannot be null.");
         else if (keyword !== undefined)
             url_ += "Keyword=" + encodeURIComponent("" + keyword) + "&";
+        if (phaseId === null)
+            throw new Error("The parameter 'phaseId' cannot be null.");
+        else if (phaseId !== undefined)
+            url_ += "PhaseId=" + encodeURIComponent("" + phaseId) + "&";
         if (skipCount === null)
             throw new Error("The parameter 'skipCount' cannot be null.");
         else if (skipCount !== undefined)

@@ -47,6 +47,9 @@ import { EditDailyworkDialogComponent } from './dailywork/edit-dailywork/edit-da
 import { PhaseComponent } from './phase/phase.component';
 import { CreatePhaseDialogComponent } from './phase/create-phase/create-phase-dialog.component';
 import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { CreateTaskDialogComponent } from './tasks/create-task/create-task-dialog.component';
+import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.c
     EditDailyworkDialogComponent,
     PhaseComponent,
     CreatePhaseDialogComponent,
-    EditPhaseDialogComponent
+    EditPhaseDialogComponent,
+    TasksComponent,
+    CreateTaskDialogComponent,
+    EditTaskDialogComponent
     
 
   ],
