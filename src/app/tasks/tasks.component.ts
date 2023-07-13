@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
-import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
-import { PhaseDto, PhaseServiceProxy, TaskDto, TaskDtoPagedResultDto, TaskServiceProxy } from '@shared/service-proxies/service-proxies';
+import {  PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
+import { EntityDto, PhaseDto, PhaseServiceProxy, TaskDto, TaskDtoPagedResultDto, TaskServiceProxy } from '@shared/service-proxies/service-proxies';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 import { CreateTaskDialogComponent } from './create-task/create-task-dialog.component';
@@ -91,12 +91,38 @@ export class TasksComponent  extends PagedListingComponentBase<TaskDto>  {
 
   startTask(task: TaskDto):void
   {
-
+    let entityDto = new EntityDto();
+    entityDto.id = task.id;
+    abp.message.confirm(
+      this.l('PhaseCompleteWarningMessage', task.title),
+      undefined,
+      (result: boolean) => {
+        if (result) {
+          this._taskService.startTask(entityDto).subscribe(() => {
+            abp.notify.success(this.l('Task Started!'));
+            this.refresh();
+          });
+        }
+      }
+    );
   }
 
   completeTask(task: TaskDto):void
   {
-    
+    let entityDto = new EntityDto();
+    entityDto.id = task.id;
+    abp.message.confirm(
+      this.l('PhaseCompleteWarningMessage', task.title),
+      undefined,
+      (result: boolean) => {
+        if (result) {
+          this._taskService.completeTask(entityDto).subscribe(() => {
+            abp.notify.success(this.l('Task Completed!'));
+            this.refresh();
+          });
+        }
+      }
+    );
   }
 
   createTask(): void {
@@ -125,7 +151,7 @@ export class TasksComponent  extends PagedListingComponentBase<TaskDto>  {
       {
         class: 'modal-lg',
         initialState: {
-          id: id,
+          phaseId: id,
         },
       }
     );

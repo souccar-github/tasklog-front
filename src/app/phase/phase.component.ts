@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { PagedListingComponentBase, PagedRequestDto } from '@shared/paged-listing-component-base';
 import { EntityDto, PhaseDto, PhaseDtoPagedResultDto, PhaseServiceProxy, ProjectDto, ProjectServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -74,7 +74,8 @@ constructor(injector: Injector,
   private route: ActivatedRoute,
   private _phaseService:PhaseServiceProxy,
   private _projectService:ProjectServiceProxy,
-   private _modalService: BsModalService) {
+   private _modalService: BsModalService,
+   private router : Router) {
   super(injector);
 }
 
@@ -172,6 +173,12 @@ constructor(injector: Injector,
       this.refresh();
     });
 
+  }
+
+
+  onTaskButtonClick(event)
+  {
+    this.router.navigateByUrl('app/phase/' + event.id +'/tasks');
   }
 
 

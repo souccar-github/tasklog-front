@@ -46,6 +46,7 @@ export abstract class PagedListingComponentBase<TEntityDto> extends AppComponent
     }
 
     public getDataPage(page: number): void {
+
         const req = new PagedRequestDto();
         req.maxResultCount = this.pageSize;
         req.skipCount = (page - 1) * this.pageSize;
