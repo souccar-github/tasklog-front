@@ -1,0 +1,81 @@
+<div cdkDropListGroup *ngIf="[isLoaded]">
+    <div hidden>{{tasks[0]}}</div>
+    <div class="example-container" >
+      <h2>Proposed <i style="color: black" class="fas fa-power-off"></i></h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="proposed"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of proposed" cdkDrag>
+            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
+            {{item.title}}
+            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
+            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        </div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <h2> Active <i style="color: green" class="fas fa-power-off"></i></h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="active"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of active" cdkDrag>
+            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
+            {{item.title}}
+            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
+            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+        <h2><i style="color: yellowgreen;" class="fas fa-user"></i> Testing </h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="testing"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of testing" cdkDrag>
+            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
+            {{item.title}}
+            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
+            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        </div>
+            
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Completed <i style="color: green;" class="fas fa-check"></i></h2>
+    
+        <div
+          cdkDropList
+          [cdkDropListData]="completed"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of completed" cdkDrag>
+            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
+            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
+            {{item.title}}
+            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
+            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        </div>
+        </div>
+      </div>
+    
+  </div>
+

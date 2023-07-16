@@ -94,11 +94,28 @@ export class TasksComponent  extends PagedListingComponentBase<TaskDto>  {
     let entityDto = new EntityDto();
     entityDto.id = task.id;
     abp.message.confirm(
-      this.l('PhaseCompleteWarningMessage', task.title),
+      this.l('StartTaskWarningMessage', task.title),
       undefined,
       (result: boolean) => {
         if (result) {
           this._taskService.startTask(entityDto).subscribe(() => {
+            abp.notify.success(this.l('Task Started!'));
+            this.refresh();
+          });
+        }
+      }
+    );
+  }
+  testTask(task: TaskDto):void
+  {
+    let entityDto = new EntityDto();
+    entityDto.id = task.id;
+    abp.message.confirm(
+      this.l('TestTaskWarningMessage', task.title),
+      undefined,
+      (result: boolean) => {
+        if (result) {
+          this._taskService.testTask(entityDto).subscribe(() => {
             abp.notify.success(this.l('Task Started!'));
             this.refresh();
           });
@@ -112,7 +129,7 @@ export class TasksComponent  extends PagedListingComponentBase<TaskDto>  {
     let entityDto = new EntityDto();
     entityDto.id = task.id;
     abp.message.confirm(
-      this.l('PhaseCompleteWarningMessage', task.title),
+      this.l('CompleteTaskWarningMessage', task.title),
       undefined,
       (result: boolean) => {
         if (result) {

@@ -50,6 +50,8 @@ import { EditPhaseDialogComponent } from './phase/edit-phase/edit-phase-dialog.c
 import { TasksComponent } from './tasks/tasks.component';
 import { CreateTaskDialogComponent } from './tasks/create-task/create-task-dialog.component';
 import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.component';
+import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -91,9 +93,9 @@ import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.comp
     EditPhaseDialogComponent,
     TasksComponent,
     CreateTaskDialogComponent,
-    EditTaskDialogComponent
+    EditTaskDialogComponent,
+    DragAndDropComponent,
     
-
   ],
   imports: [
     CommonModule,
@@ -109,6 +111,7 @@ import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.comp
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
+    DragDropModule,
   ],
   providers: [],
   entryComponents: [
