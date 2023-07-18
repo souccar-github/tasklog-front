@@ -52,6 +52,7 @@ import { CreateTaskDialogComponent } from './tasks/create-task/create-task-dialo
 import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.component';
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ViewTaskDialogComponent } from './tasks/view-task/view-task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CreateTaskDialogComponent,
     EditTaskDialogComponent,
     DragAndDropComponent,
+    ViewTaskDialogComponent,
     
   ],
   imports: [

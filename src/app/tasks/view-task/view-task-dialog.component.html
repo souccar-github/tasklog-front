@@ -1,0 +1,98 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createDailyWorkModal="ngForm"
+>
+  <abp-modal-header
+    [title]="'ViewTask' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="title">
+            {{ "Title" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              id="title"
+              required
+              [(ngModel)]="task.title"
+              #userNameModel="ngModel"
+              #userNameEl
+              disabled="disabled"
+            />
+            <abp-validation-summary
+              [control]="userNameModel"
+              [controlEl]="userNameEl"
+            ></abp-validation-summary>
+          </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="duration">
+              {{ "Description" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                name="description"
+                id="description"
+                required
+                [(ngModel)]="task.description"
+                #userNameModel="ngModel"
+                #userNameEl
+                disabled="disabled"
+              />
+              <abp-validation-summary
+                [control]="userNameModel"
+                [controlEl]="userNameEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="type">
+              {{ "Assigned To" | localize }}
+            </label>
+          <div class="col-md-9">
+
+            <input [(ngModel)]="task.assignedTo.userName" disabled="disabled" class="form-control" name="name" id="name" />
+
+          </div>
+          </div>
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="type">
+              {{ "Type" | localize }}
+            </label>
+            <div class="col-md-9">
+  
+                <input disabled class="form-control" value="{{task.type.name}}" />
+
+  
+            </div>
+          </div>
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="priority">
+              {{ "Priority" | localize }}
+            </label>
+            <div class="col-md-9">
+  
+             
+                  <input disabled class="form-control" *ngIf="task.priority == 0" value="Low" />
+                  <input disabled class="form-control" *ngIf="task.priority == 1" value="Medium" />
+                  <input disabled class="form-control" *ngIf="task.priority == 2" value="High" />
+  
+            </div>
+          </div>
+             
+       
+
+  </div>
+  <abp-modal-footer
+    [saveDisabled]="true"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

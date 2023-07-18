@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { EntityDto, TaskDto, TaskServiceProxy } from '@shared/service-proxies/service-proxies';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ViewTaskDialogComponent } from '@app/tasks/view-task/view-task-dialog.component';
 
 @Component({
   selector: 'app-drag-and-drop',
@@ -66,7 +68,8 @@ export class DragAndDropComponent implements OnInit {
       
     }
   }
-  constructor(private _taskService: TaskServiceProxy) { }
+  constructor(private _taskService: TaskServiceProxy,  
+    private _modalService: BsModalService) { }
 
   loaded : boolean = false;
 
@@ -98,6 +101,11 @@ export class DragAndDropComponent implements OnInit {
     // });
 
 
+
+
+
+
+
     this.isLoaded = false;
     this._taskService.getCurrentUserTasks().subscribe({
       next : (result : TaskDto[]) => {
@@ -125,6 +133,19 @@ export class DragAndDropComponent implements OnInit {
       this.isLoaded = true;
     }
     }
+    );
+  }
+
+  private showTaskDetails(task?: TaskDto): void {
+    let showCreateOnlyWithId: BsModalRef;
+    showCreateOnlyWithId = this._modalService.show(
+      ViewTaskDialogComponent,
+      {
+        class: 'modal-lg',
+        initialState: {
+          task: task,
+        },
+      }
     );
   }
 

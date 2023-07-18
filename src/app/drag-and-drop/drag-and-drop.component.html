@@ -1,40 +1,151 @@
 <div cdkDropListGroup *ngIf="[isLoaded]">
     <div hidden>{{tasks[0]}}</div>
     <div class="example-container" >
-      <h2>Proposed <i style="color: black" class="fas fa-power-off"></i></h2>
+      <h2><i style="color: black" class="fas fa-power-off"></i> Proposed </h2>
   
       <div
         cdkDropList
         [cdkDropListData]="proposed"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of proposed" cdkDrag>
-            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
-            {{item.title}}
-            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
-            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        <div class="card" *ngFor="let item of proposed" cdkDrag>
+          <div *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+          <div class="card-header" *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+            <div class="row">
+              <div class="col-8">
+            {{item.type?.name}}
+            <i style="color: red;" class="fas fa-bug"></i>
+          </div>
+          <div class="col-4">
+            <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+            <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+            <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+          </div>
+          </div>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <div class="row">
+              <div class="col-6">
+            Assigned To : {{item.assignedTo?.userName}}
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+
+          <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+            <div class="row">
+              <div class="col-8">
+            {{item.type?.name}}
+            <i style="color: blue;" class="fas fa-tasks"></i>
+          </div>
+          <div class="col-4">
+            <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+            <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+            <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+          </div>
+          </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <div class="row">
+              <div class="col-6">
+            Assigned To : {{item.assignedTo?.userName}}
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
+
+      </div>
     </div>
+
+ 
   
     <div class="example-container">
-      <h2> Active <i style="color: green" class="fas fa-power-off"></i></h2>
+      <h2><i style="color: green" class="fas fa-power-off"></i> Active </h2>
   
       <div
         cdkDropList
         [cdkDropListData]="active"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of active" cdkDrag>
-            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
-            {{item.title}}
-            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
-            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+        <div class="card" *ngFor="let item of active" cdkDrag>
+          <div *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+          <div class="card-header" *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+            <div class="row">
+              <div class="col-8">
+            {{item.type?.name}}
+            <i style="color: red;" class="fas fa-bug"></i>
+          </div>
+          <div class="col-4">
+            <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+            <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+            <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+          </div>
+          </div>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <div class="row">
+              <div class="col-6">
+            Assigned To : {{item.assignedTo?.userName}}
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          </div>
         </div>
+        <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+
+          <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+            <div class="row">
+              <div class="col-8">
+            {{item.type?.name}}
+            <i style="color: blue;" class="fas fa-tasks"></i>
+          </div>
+          <div class="col-4">
+            <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+            <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+            <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+          </div>
+          </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <div class="row">
+              <div class="col-6">
+            Assigned To : {{item.assignedTo?.userName}}
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
 
@@ -46,33 +157,141 @@
           [cdkDropListData]="testing"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of testing" cdkDrag>
-            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
-            {{item.title}}
-            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
-            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+          <div class="card" *ngFor="let item of testing" cdkDrag>
+            <div *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+            <div class="card-header" *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+              <div class="row">
+                <div class="col-8">
+              {{item.type?.name}}
+              <i style="color: red;" class="fas fa-bug"></i>
+            </div>
+            <div class="col-4">
+              <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+              <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+              <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+            </div>
+            </div>
+            </div>
+  
+            <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              <div class="row">
+                <div class="col-6">
+              Assigned To : {{item.assignedTo?.userName}}
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+  
+            <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+              <div class="row">
+                <div class="col-8">
+              {{item.type?.name}}
+              <i style="color: blue;" class="fas fa-tasks"></i>
+            </div>
+            <div class="col-4">
+              <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+              <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+              <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+            </div>
+            </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              <div class="row">
+                <div class="col-6">
+              Assigned To : {{item.assignedTo?.userName}}
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            </div>
+          </div>
         </div>
             
         </div>
       </div>
 
       <div class="example-container">
-        <h2>Completed <i style="color: green;" class="fas fa-check"></i></h2>
+        <h2><i style="color: green;" class="fas fa-check"></i> Completed </h2>
     
         <div
           cdkDropList
           [cdkDropListData]="completed"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of completed" cdkDrag>
-            <i *ngIf="item.priority == 0" style="color: green;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 1" style="color: yellow;" class="fas fa-circle"></i>
-            <i *ngIf="item.priority == 2" style="color: red;" class="fas fa-circle"></i> 
-            {{item.title}}
-            <i *ngIf="item.type?.name == 'Bug'" style="color: red;" class="fas fa-bug"></i>
-            <i *ngIf="item.type?.name == 'Task'" style="color: blue;" class="fas fa-tasks"></i>
+          <div class="card" *ngFor="let item of completed" cdkDrag>
+            <div *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+            <div class="card-header" *ngIf="item.type?.name == 'Bug'" style="background-color: #f4dedd;">
+              <div class="row">
+                <div class="col-8">
+              {{item.type?.name}}
+              <i style="color: red;" class="fas fa-bug"></i>
+            </div>
+            <div class="col-4">
+              <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+              <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+              <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+            </div>
+            </div>
+            </div>
+  
+            <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              <div class="row">
+                <div class="col-6">
+              Assigned To : {{item.assignedTo?.userName}}
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+  
+            <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+              <div class="row">
+                <div class="col-8">
+              {{item.type?.name}}
+              <i style="color: blue;" class="fas fa-tasks"></i>
+            </div>
+            <div class="col-4">
+              <small *ngIf="item.priority == 0" class="badge badge-danger">High</small>
+              <small *ngIf="item.priority == 1" class="badge badge-warning">Medium</small>
+              <small *ngIf="item.priority == 2" class="badge badge-success">Low</small>
+            </div>
+            </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{item.title}}</h5>
+              <p class="card-text">{{item.description}}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+              <div class="row">
+                <div class="col-6">
+              Assigned To : {{item.assignedTo?.userName}}
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary btn-sm " (click)="showTaskDetails(item)" style="width: 120px;"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            </div>
+          </div>
         </div>
         </div>
       </div>

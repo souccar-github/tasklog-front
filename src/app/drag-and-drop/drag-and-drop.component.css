@@ -26,7 +26,7 @@
     box-sizing: border-box;
     cursor: move;
     background: white;
-    font-size: 20px;
+    font-size: 1rem;
   }
   
   .cdk-drag-preview {
@@ -55,4 +55,7 @@
   
   i{
     font-size: 0.73em;
+  }
+  .card{
+    cursor: move;
   }
