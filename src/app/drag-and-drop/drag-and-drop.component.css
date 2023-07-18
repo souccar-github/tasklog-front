@@ -13,6 +13,7 @@
     border-radius: 4px;
     overflow: hidden;
     display: block;
+    padding: 1rem;
   }
   
   .example-box {
@@ -58,4 +59,7 @@
   }
   .card{
     cursor: move;
+  }
+  a{
+    cursor: pointer;
   }
