@@ -9,6 +9,26 @@
   ></abp-modal-header>
   <div class="modal-body">
 
+    <div class="form-group row mb-0">
+      <label class="col-md-3 col-form-label">
+        {{ "Bug" | localize }}
+      </label>
+      <div class="col-md-9">
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            name="isBug"
+            id="isBug"
+            [(ngModel)]="task.isBug"
+            disabled="disabled"
+
+          />
+          <label class="custom-control-label mt-2" for="isBug"></label>
+        </div>
+      </div>
+    </div>
+
         <div class="form-group row required">
           <label class="col-md-3 col-form-label" for="title">
             {{ "Title" | localize }}

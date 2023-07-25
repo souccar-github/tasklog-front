@@ -96,8 +96,7 @@ import { ViewTaskDialogComponent } from './tasks/view-task/view-task-dialog.comp
     CreateTaskDialogComponent,
     EditTaskDialogComponent,
     DragAndDropComponent,
-    ViewTaskDialogComponent,
-    
+    ViewTaskDialogComponent,    
   ],
   imports: [
     CommonModule,

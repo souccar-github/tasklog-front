@@ -4460,6 +4460,7 @@ export interface ICreateRoleDto {
 }
 
 export class CreateTaskDto implements ICreateTaskDto {
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phaseId: number;
@@ -4479,6 +4480,7 @@ export class CreateTaskDto implements ICreateTaskDto {
 
     init(_data?: any) {
         if (_data) {
+            this.isBug = _data["isBug"];
             this.title = _data["title"];
             this.description = _data["description"];
             this.phaseId = _data["phaseId"];
@@ -4498,6 +4500,7 @@ export class CreateTaskDto implements ICreateTaskDto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["isBug"] = this.isBug;
         data["title"] = this.title;
         data["description"] = this.description;
         data["phaseId"] = this.phaseId;
@@ -4517,6 +4520,7 @@ export class CreateTaskDto implements ICreateTaskDto {
 }
 
 export interface ICreateTaskDto {
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phaseId: number;
@@ -6154,6 +6158,7 @@ export interface IRoleListDtoListResultDto {
 
 export class TaskDto implements ITaskDto {
     id: number;
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phase: PhaseDto;
@@ -6174,6 +6179,7 @@ export class TaskDto implements ITaskDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.isBug = _data["isBug"];
             this.title = _data["title"];
             this.description = _data["description"];
             this.phase = _data["phase"] ? PhaseDto.fromJS(_data["phase"]) : <any>undefined;
@@ -6194,6 +6200,7 @@ export class TaskDto implements ITaskDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["isBug"] = this.isBug;
         data["title"] = this.title;
         data["description"] = this.description;
         data["phase"] = this.phase ? this.phase.toJSON() : <any>undefined;
@@ -6214,6 +6221,7 @@ export class TaskDto implements ITaskDto {
 
 export interface ITaskDto {
     id: number;
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phase: PhaseDto;
@@ -6718,6 +6726,7 @@ export interface IUpdateProjectDto {
 
 export class UpdateTaskDto implements IUpdateTaskDto {
     id: number;
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phaseId: number;
@@ -6738,6 +6747,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
     init(_data?: any) {
         if (_data) {
             this.id = _data["id"];
+            this.isBug = _data["isBug"];
             this.title = _data["title"];
             this.description = _data["description"];
             this.phaseId = _data["phaseId"];
@@ -6758,6 +6768,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
+        data["isBug"] = this.isBug;
         data["title"] = this.title;
         data["description"] = this.description;
         data["phaseId"] = this.phaseId;
@@ -6778,6 +6789,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
 
 export interface IUpdateTaskDto {
     id: number;
+    isBug: boolean;
     title: string | undefined;
     description: string | undefined;
     phaseId: number;

@@ -1,3 +1,34 @@
+<!-- <button class="btn btn-primary" (click)="refreshTasks()">Refresh</button> -->
+
+<div class="card">
+  <div class="card-header">
+    <label>Filters</label>
+  </div>
+  <div class="card-body">
+  <div class="row">
+    <div class="col-md-3">
+      <label>Project</label>
+      <select (change)="projectChangedEvent()" [(ngModel)]="selectedProject"  class="form-control" name="proj" id="proj">
+        <option   required
+          *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+        </select>
+
+    </div>
+    <div class="col-md-3">
+      <label>Phase</label>
+      <select [(ngModel)]="selectedPhase"  class="form-control" name="phase" id="phase">
+        <option   required
+          *ngFor="let phase of phases" [ngValue]="phase.id">{{phase.title}}</option>
+        </select>
+    </div>
+  </div>
+</div>
+<div class="card-footer">
+  <button  class="btn btn-sm bg-secondary mx-2" (click)="clearFilters()">Clear Filters</button>
+  <button  class="btn btn-sm bg-primary mx-2" (click)="Go()">Go</button>
+</div>
+</div>
+
 <div cdkDropListGroup >
     <div class="example-container" >
       <h2><i style="color: black" class="fas fa-power-off"></i> Proposed </h2>
@@ -8,12 +39,12 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)" >
         <div class="card" *ngFor="let item of proposed" cdkDrag>
-          <div *ngIf="item.type?.name == 'Bug'" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
+          <div *ngIf="item.isBug" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
           ">
           <div class="card-header">
             <div class="row">
               <div class="col-8">
-            {{item.type?.name}}
+            <!-- {{item.type?.name}} -->
             <i style="color: red;" class="fas fa-bug"></i>
           </div>
           <div class="col-4 " >
@@ -40,12 +71,12 @@
 
           </div>
         </div>
-        <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
+        <div *ngIf="!item.isBug" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
 
-          <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+          <div class="card-header" style="background-color: #d9e7cb;">
             <div class="row">
               <div class="col-8">
-            {{item.type?.name}}
+            <!-- {{item.type?.name}} -->
             <i style="color: blue;" class="fas fa-tasks"></i>
           </div>
           <div class="col-4">
@@ -87,12 +118,11 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)">
         <div class="card" *ngFor="let item of active" cdkDrag>
-          <div *ngIf="item.type?.name == 'Bug'" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
+          <div *ngIf="item.isBug" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
           ">
           <div class="card-header">
             <div class="row">
               <div class="col-8">
-            {{item.type?.name}}
             <i style="color: red;" class="fas fa-bug"></i>
           </div>
           <div class="col-4 " >
@@ -119,12 +149,11 @@
 
           </div>
         </div>
-        <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
+        <div *ngIf="!item.isBug" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
 
-          <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+          <div class="card-header"  style="background-color: #d9e7cb;">
             <div class="row">
               <div class="col-8">
-            {{item.type?.name}}
             <i style="color: blue;" class="fas fa-tasks"></i>
           </div>
           <div class="col-4">
@@ -163,12 +192,11 @@
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           <div class="card" *ngFor="let item of testing" cdkDrag>
-            <div *ngIf="item.type?.name == 'Bug'" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
+            <div *ngIf="item.isBug" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
             ">
             <div class="card-header">
               <div class="row">
                 <div class="col-8">
-              {{item.type?.name}}
               <i style="color: red;" class="fas fa-bug"></i>
             </div>
             <div class="col-4 " >
@@ -195,12 +223,11 @@
   
             </div>
           </div>
-          <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
+          <div *ngIf="!item.isBug" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
   
-            <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+            <div class="card-header"  style="background-color: #d9e7cb;">
               <div class="row">
                 <div class="col-8">
-              {{item.type?.name}}
               <i style="color: blue;" class="fas fa-tasks"></i>
             </div>
             <div class="col-4">
@@ -240,12 +267,11 @@
           class="example-list"
           (cdkDropListDropped)="drop($event)">
           <div class="card" *ngFor="let item of completed" cdkDrag>
-            <div *ngIf="item.type?.name == 'Bug'" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
+            <div *ngIf="item.isBug" style=" background-color: #f4dedd;border: 1px solid #9c4146;border-radius: 5px;box-shadow: 0px 0px 9px 0px #9c4146;
             ">
             <div class="card-header">
               <div class="row">
                 <div class="col-8">
-              {{item.type?.name}}
               <i style="color: red;" class="fas fa-bug"></i>
             </div>
             <div class="col-4 " >
@@ -272,12 +298,11 @@
   
             </div>
           </div>
-          <div *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
+          <div *ngIf="!item.isBug" style="background-color: #d9e7cb;border: 1px solid #386a20;border-radius: 5px;box-shadow: 0px 0px 9px 0px #386a20;">
   
-            <div class="card-header" *ngIf="item.type?.name == 'Task'" style="background-color: #d9e7cb;">
+            <div class="card-header"  style="background-color: #d9e7cb;">
               <div class="row">
                 <div class="col-8">
-              {{item.type?.name}}
               <i style="color: blue;" class="fas fa-tasks"></i>
             </div>
             <div class="col-4">
