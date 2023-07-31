@@ -91,7 +91,7 @@
             <div class="col-md-9">
   
              
-              <select [(ngModel)]="task.typeId" class="form-control" name="type" id="type">
+              <select [(ngModel)]="task.typeId"  class="form-control" name="type" id="type">
                   <option
                  *ngFor="let type of taskTypes"  [ngValue]="type.id">{{type.name}}
               </option>
@@ -114,20 +114,24 @@
   
             </div>
           </div>
-          
 
 
-          
-        
-        
+
+      
        
       </tab>
-      
+      <tab [heading]="'Editor' | localize" class="pt-3 px-2">
+        
+          <angular-editor [config]="config" [(ngModel)]="task.richTextDescription" [ngModelOptions]="{standalone: true}" ></angular-editor>
+      </tab>
     </tabset>
   </div>
+
   <abp-modal-footer
     [cancelDisabled]="saving"
     [saveDisabled]="!createDailyWorkModal.form.valid || saving"
     (onCancelClick)="bsModalRef.hide()"
   ></abp-modal-footer>
 </form>
+
+              

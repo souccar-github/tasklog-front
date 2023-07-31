@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { AppComponentBase } from '@shared/app-component-base';
 import { PhaseServiceProxy, TaskServiceProxy, TaskTypeDto, TaskTypeServiceProxy, UpdateTaskDto, UserDto, UserServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -15,6 +16,18 @@ export class EditTaskDialogComponent extends AppComponentBase {
   task = new UpdateTaskDto();
   users = [] as UserDto[];
   taskTypes = [] as TaskTypeDto[];
+
+  config : AngularEditorConfig = {
+    editable:true,
+    spellcheck:true,
+    height:'15rem',
+    minHeight:'5rem',
+    placeholder: 'Enter Text Here ....',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    sanitize: false,
+  };
 
   constructor(
     injector: Injector,
@@ -40,7 +53,11 @@ export class EditTaskDialogComponent extends AppComponentBase {
     });
     this._taskService.getForEdit(this.id).subscribe((result: UpdateTaskDto) => {
       this.task = result;
+    console.log(result);
+
     });
+
+
   }
 
   save(): void {

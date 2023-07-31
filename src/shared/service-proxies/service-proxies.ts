@@ -4468,6 +4468,7 @@ export class CreateTaskDto implements ICreateTaskDto {
     assignedToId: number;
     typeId: number;
     priority: number;
+    richTextDescription: string | undefined;
 
     constructor(data?: ICreateTaskDto) {
         if (data) {
@@ -4488,6 +4489,7 @@ export class CreateTaskDto implements ICreateTaskDto {
             this.assignedToId = _data["assignedToId"];
             this.typeId = _data["typeId"];
             this.priority = _data["priority"];
+            this.richTextDescription = _data["richTextDescription"];
         }
     }
 
@@ -4508,6 +4510,7 @@ export class CreateTaskDto implements ICreateTaskDto {
         data["assignedToId"] = this.assignedToId;
         data["typeId"] = this.typeId;
         data["priority"] = this.priority;
+        data["richTextDescription"] = this.richTextDescription;
         return data; 
     }
 
@@ -4528,6 +4531,7 @@ export interface ICreateTaskDto {
     assignedToId: number;
     typeId: number;
     priority: number;
+    richTextDescription: string | undefined;
 }
 
 export class CreateTaskTypeDto implements ICreateTaskTypeDto {
@@ -6166,6 +6170,7 @@ export class TaskDto implements ITaskDto {
     assignedTo: UserDto;
     type: TaskTypeDto;
     priority: number;
+    richTextDescription: string | undefined;
 
     constructor(data?: ITaskDto) {
         if (data) {
@@ -6187,6 +6192,7 @@ export class TaskDto implements ITaskDto {
             this.assignedTo = _data["assignedTo"] ? UserDto.fromJS(_data["assignedTo"]) : <any>undefined;
             this.type = _data["type"] ? TaskTypeDto.fromJS(_data["type"]) : <any>undefined;
             this.priority = _data["priority"];
+            this.richTextDescription = _data["richTextDescription"];
         }
     }
 
@@ -6208,6 +6214,7 @@ export class TaskDto implements ITaskDto {
         data["assignedTo"] = this.assignedTo ? this.assignedTo.toJSON() : <any>undefined;
         data["type"] = this.type ? this.type.toJSON() : <any>undefined;
         data["priority"] = this.priority;
+        data["richTextDescription"] = this.richTextDescription;
         return data; 
     }
 
@@ -6229,6 +6236,7 @@ export interface ITaskDto {
     assignedTo: UserDto;
     type: TaskTypeDto;
     priority: number;
+    richTextDescription: string | undefined;
 }
 
 export class TaskDtoPagedResultDto implements ITaskDtoPagedResultDto {
@@ -6734,6 +6742,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
     assignedToId: number;
     typeId: number;
     priority: number;
+    richTextDescription: string | undefined;
 
     constructor(data?: IUpdateTaskDto) {
         if (data) {
@@ -6755,6 +6764,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
             this.assignedToId = _data["assignedToId"];
             this.typeId = _data["typeId"];
             this.priority = _data["priority"];
+            this.richTextDescription = _data["richTextDescription"];
         }
     }
 
@@ -6776,6 +6786,7 @@ export class UpdateTaskDto implements IUpdateTaskDto {
         data["assignedToId"] = this.assignedToId;
         data["typeId"] = this.typeId;
         data["priority"] = this.priority;
+        data["richTextDescription"] = this.richTextDescription;
         return data; 
     }
 
@@ -6797,6 +6808,7 @@ export interface IUpdateTaskDto {
     assignedToId: number;
     typeId: number;
     priority: number;
+    richTextDescription: string | undefined;
 }
 
 export class UpdateTaskTypeDto implements IUpdateTaskTypeDto {

@@ -53,7 +53,9 @@ import { EditTaskDialogComponent } from './tasks/edit-task/edit-task-dialog.comp
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ViewTaskDialogComponent } from './tasks/view-task/view-task-dialog.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,6 +115,7 @@ import { ViewTaskDialogComponent } from './tasks/view-task/view-task-dialog.comp
     SharedModule,
     NgxPaginationModule,
     DragDropModule,
+    AngularEditorModule
   ],
   providers: [],
   entryComponents: [

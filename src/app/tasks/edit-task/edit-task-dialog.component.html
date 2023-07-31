@@ -9,7 +9,8 @@
     (onCloseClick)="bsModalRef.hide()"
   ></abp-modal-header>
   <div class="modal-body">
-
+    <tabset>
+      <tab [heading]="'TaskDetails' | localize" class="pt-3 px-2">
     <div class="form-group row mb-0">
       <label class="col-md-3 col-form-label">
         {{ "Bug" | localize }}
@@ -113,10 +114,18 @@
   
             </div>
           </div>
-             
-       
 
+          </tab>
+             
+          <tab [heading]="'Editor' | localize" class="pt-3 px-2">
+        
+              <angular-editor [config]="config" [(ngModel)]="task.richTextDescription" [ngModelOptions]="{standalone: true}"></angular-editor>
+        
+          </tab>
+</tabset>
   </div>
+
+
   <abp-modal-footer
     [cancelDisabled]="saving"
     [saveDisabled]="!createDailyWorkModal.form.valid || saving"
